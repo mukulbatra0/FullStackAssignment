@@ -10,6 +10,7 @@ const scrapeEventbriteSydney = require('./scrapers/eventbriteSydney');
 
 // Import routes
 const eventRoutes = require('./routes/eventRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -29,6 +30,7 @@ mongoose.connect(MONGODB_URI)
 
 // Routes
 app.use('/api/events', eventRoutes);
+app.use('/api/auth', authRoutes);
 
 // Manual scraper trigger route (for testing and development)
 app.get('/api/scrape/eventbrite', async (req, res) => {

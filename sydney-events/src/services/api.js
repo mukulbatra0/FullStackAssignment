@@ -54,6 +54,24 @@ const api = {
   registerEmailAndRedirect: async (data) => {
     const response = await axios.post(`${API_URL}/events/register-and-redirect`, data);
     return response.data;
+  },
+  
+  // Register user and send OTP
+  registerUser: async (email) => {
+    const response = await axios.post(`${API_URL}/auth/register`, { email });
+    return response.data;
+  },
+  
+  // Verify OTP
+  verifyOTP: async (email, otp) => {
+    const response = await axios.post(`${API_URL}/auth/verify-otp`, { email, otp });
+    return response.data;
+  },
+  
+  // Resend OTP
+  resendOTP: async (email) => {
+    const response = await axios.post(`${API_URL}/auth/resend-otp`, { email });
+    return response.data;
   }
 };
 
